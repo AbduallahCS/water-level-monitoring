@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Liquid Level Monitoring</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        #liquidContainer {
+            width: 100px;
+            height: 300px;
+            border: 2px solid black;
+            margin: 0 auto;
+            position: relative;
+            background-color: lightgray;
+        }
+
+        #liquidBar {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: blue;
+            height: 0%;
+            transition: height 0.5s ease;
+        }
+
+        #liquidLevel {
+            margin-top: 20px;
+            font-size: 2em;
+            color: blue;
+        }
+
+        #warningBox {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+            display: none;
+        }
+
+        canvas {
+            max-width: 100%;
+        }
+
+        #graphContainer {
+            margin-top: 30px;
+            width: 80%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Liquid Level Monitoring</h1>
+
+    <div id="liquidContainer">
+        <div id="liquidBar"></div>
+    </div>
+
+    <div id="liquidLevel">0%</div>
+    <div id="warningBox">⚠️ WARNING: Liquid level above 90%!</div>
+
+    <div id="graphContainer">
+        <canvas id="liquidChart"></canvas>
+    </div>
+
+    <!-- Ensure you have the correct path for alarm.mp3 -->
+    <audio id="alarmSound" src="{{ url_for('static', filename='alarm.mp3') }}" preload="auto"></audio>
+
+    <div id="emergencyBox" style="display: none; color: white; background-color: red; font-weight: bold; padding: 10px; margin-top: 15px;">
+        🚨 EMERGENCY: Liquid level exceeds 99%! Stopping water flow!
+    </div>
+
+    <!-- Only load the script once -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

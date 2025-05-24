@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 30px;
+}
+
+#liquidContainer {
+    width: 100px;
+    height: 300px;
+    border: 2px solid black;
+    margin: 0 auto;
+    position: relative;
+    background-color: lightgray;
+}
+
+#liquidBar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: blue;
+    height: 0%;
+    transition: height 0.5s ease;
+}
+
+#liquidLevel {
+    margin-top: 20px;
+    font-size: 2em;
+    color: blue;
+}
+
+#warningBox {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+    display: none;
+}
+
+button {
+    padding: 8px 16px;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+canvas {
+    max-width: 100%;
+}
